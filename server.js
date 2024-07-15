@@ -21,4 +21,8 @@ app.listen(3000)
 /*
     1) Tipo de rota/  metodo HTTP
     2) ENDERECO
+
+    mongodb vitoruser
+    keys 1jotrrKFHbpui6Iy
+
 */
