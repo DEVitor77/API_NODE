@@ -20,6 +20,22 @@ app.post('/usuarios', async (req, res) => {
     res.status(201).json(req.body)
 })
 
+app.put('/usuarios/:id', async (req, res) => {
+
+    await prisma.user.update({
+        where: {
+            id: req.params.id
+        },
+
+        data: {
+            email: req.body.email,
+            name: req.body.name,
+            age: req.body.age
+        }
+    })
+
+    res.status(201).json(req.body)
+})
 app.get('/usuarios', async (req, res) => {
 
     const users = await prisma.user.findMany()
@@ -27,7 +43,24 @@ app.get('/usuarios', async (req, res) => {
     res.status(200).json(users)
 })
 
+app.delete('/usuarios/:id', async (req, res) => {
+
+    await prisma.user.delete({
+        where: {
+            id: req.params.id,
+        }
+    })
+
+    res.status(200).json({ message: 'usuário deletado com sucesso!' })
+
+
+})
+
+
+
 app.listen(3000)
+
+
 
 /*
     1) Tipo de rota/  metodo HTTP
